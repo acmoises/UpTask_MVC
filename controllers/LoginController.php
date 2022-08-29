@@ -24,5 +24,28 @@ class LoginController {
 
         }
     }
+
+    public static function olvide() {
+        echo "desde olvide";
+
+        if($_SERVER['REQUEEST_METHOD'] === 'POST' ){
+
+        }
+    }
+
+    public static function reestablecer() {
+        echo "desde reestablecer";
+
+        if($_SERVER['REQUEEST_METHOD'] === 'POST' ){
+
+        }
+    }
+
+    public static function mensaje() {
+        echo "desde mensaje";
+    }
     
+    public static function confirmar() {
+        echo "desde confirmar";
+    }
 }
