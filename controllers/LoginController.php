@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Usuario;
 use MVC\Router;
 
 class LoginController {
@@ -26,20 +27,27 @@ class LoginController {
 
     public static function crear(Router $router) {
 
-        if($_SERVER['REQUEEST_METHOD'] === 'POST' ){
+        $usuario = new Usuario;
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST' ){
+            
+            $usuario->sincronizar($_POST);
+
+            $alertas = $usuario->validarNuevaCuenta();
 
         }
 
         // Render de la vista
         $router->render('auth/crear', [
-            'titulo' => 'Crear Cuenta'
+            'titulo' => 'Crear Cuenta',
+            'usuario' => $usuario
         ]);
 
     }
 
     public static function olvide(Router $router) {
 
-        if($_SERVER['REQUEEST_METHOD'] === 'POST' ){
+        if($_SERVER['REQUEST_METHOD'] === 'POST' ){
 
         }
 
@@ -52,7 +60,7 @@ class LoginController {
 
     public static function reestablecer(Router $router) {
         
-        if($_SERVER['REQUEEST_METHOD'] === 'POST' ){
+        if($_SERVER['REQUEST_METHOD'] === 'POST' ){
 
         }
 
