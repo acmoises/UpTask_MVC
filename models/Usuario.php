@@ -5,7 +5,7 @@ namespace Model;
 class Usuario extends ActiveRecord {
 
     protected static $tabla = 'usuarios';
-    protected static $colomnasDB = ['id', 'nombre', 'email', 'password', 'token', 'confirmado'];
+    protected static $columnasDB = ['id', 'nombre', 'email', 'password', 'token', 'confirmado'];
 
     public function __construct($args = [])
     {
@@ -16,4 +16,18 @@ class Usuario extends ActiveRecord {
         $this->token = $args['token'] ?? '';
         $this->confirmado = $args['confirmado'] ?? '';
     }
+
+    public function validarNuevaCuenta() {
+        
+        if(!$this->nombre){
+            self::$alertas['error'][] = 'El Nombre de Usuario es obligatorio';
+        }
+        
+        if(!$this->email){
+            self::$alertas['error'][] = 'El Email de Usuario es obligatorio';
+        }
+
+        return self::$alertas;
+    }
+
 }
