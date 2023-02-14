@@ -44,7 +44,21 @@ class LoginController {
                     Usuario::getAlertas();
                 }else{
 
+                    // Hashear password
+                   $usuario->hashPassword();
+
+                   // Eliminar password2
+                   unset($usuario->password2);
+
+                   // Generar token 
+                   $usuario->crearToken();
+
                     // crear un nuevo usuario
+                    $resultado = $usuario->guardar();
+
+                    if($resultado){
+                        header('Location: /mensaje');
+                    }
                     
                 }
             }
