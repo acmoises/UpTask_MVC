@@ -43,7 +43,6 @@ class Email {
 
         // Enviar email 
         $mail->send();
-
-
+        
     }
 }
