@@ -93,20 +93,25 @@ class LoginController {
 
                 if($usuario && $usuario->confirmado){
                     // Generar un nuevo token
+                    $usuario->crearToken();
+                    unset($usuario->password2);
 
                     // Actualizar el usuario
+                    $usuario->guardar();
 
                     // Enviar el email
 
                     // Imprimir la alerta
+                    Usuario::setAlerta('exito', 'Hemos enviado las instrucciones a tu email');
+
 
                 }else{
                     Usuario::setAlerta('error', 'El Usuario no existe o no esta confirmado');
-                    $alertas = Usuario::getAlertas();
                 }
             }
-
         }
+
+        $alertas = Usuario::getAlertas();
 
         //Muestra la vista
         $router->render('auth/olvide', [
