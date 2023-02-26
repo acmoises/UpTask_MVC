@@ -8,7 +8,7 @@
         <?php include_once __DIR__ . "/../templates/alertas.php"  ?>
 
         <?php if($mostrar) { ?>
-            <form class="formulario" method="POST" action="/reestablecer">
+            <form class="formulario" method="POST">
 
                 <div class="campo">
                     <label for="password">Email</label>
