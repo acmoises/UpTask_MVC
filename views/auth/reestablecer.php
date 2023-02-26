@@ -11,7 +11,7 @@
             <form class="formulario" method="POST">
 
                 <div class="campo">
-                    <label for="password">Email</label>
+                    <label for="password">Password</label>
                         <input 
                             type="password"
                             id="password"
