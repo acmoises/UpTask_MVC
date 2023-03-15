@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Model\Proyecto;
+use Model\Tarea;
 
 class TareaController {
 
@@ -29,17 +30,23 @@ class TareaController {
 
                 return;
 
-            }else{
+            }
+
+            // Todo bien, instanciar y crear la tarea 
+            $tarea = new Tarea($_POST);
+            $tarea->proyectoId = $proyecto->id; 
+            $resultado = $tarea->guardar();
+
+            if($resultado){
                 $respuesta = [
                     'tipo' => 'exito',
-                    'mensaje' => 'Tarea agregada correctamente'
+                    'id' => $resultado['id'],
+                    'mensaje' => 'Tarea creada correctamente'
                 ];
 
                 echo json_encode($respuesta);
-
-                return;
             }
-            
+
         }
     }
 
