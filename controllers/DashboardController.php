@@ -140,6 +140,14 @@ class DashboardController {
 
             if(empty($alertas)){
 
+                $resultado  = $usuario->comprobar_password();
+
+                if($resultado){
+
+                }else {
+                    Usuario::setAlerta('error', 'Password incorrecto');
+                    $alertas = $usuario->getAlertas();
+                }
             }
 
         }
