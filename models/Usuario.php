@@ -96,7 +96,8 @@ class Usuario extends ActiveRecord {
 
     }
 
-    public function nuevo_password() {
+    // Validar el nuevo password
+    public function nuevo_password(): array {
         
         if(!$this->password_actual){
             self::$alertas['error'][] = 'El password actual es obligatorio';
@@ -114,13 +115,20 @@ class Usuario extends ActiveRecord {
 
     }
 
+    // Comprobar password
+    public function comprobar_password(): bool {
+        
+        return password_verify($this->password_actual, $this->password);
+
+    }
+
     // Hashea el password
-    public function hashPassword(){
+    public function hashPassword(): void {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }
 
     // Genera un token
-    public function crearToken(){
+    public function crearToken(): void {
         $this->token = uniqid();
     }
 
